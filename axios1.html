@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Axios é um cliente HTTP, só que também é uma biblioteca de terceiros, ou seja, não é suportado pelo padrão browser
+
+        //pegando a lista de estados utilizando axios
+
+        const url = 'dados/estados.json'
+
+        // diferente do fetch, dentro de axios, com o atributo .data, já tem a sua disposição aquilo que recebeu como resposta da requisição
+
+        axios(url).then(resp => {
+            const itens = resp.data.reduce/* resp.data já é um JSON convertido */(
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+
+        })
+    </script>
+</body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Fetch API é uma forma mais moderna e simples de fazer requisições ajax sem usar framework
+
+        const url = 'dados/estados.json'
+        fetch(url)
+            .then(resp => resp.json()/* .json retorna uma promise */)
+            .then(estados => {
+                const itens = estados.reduce(
+                    (html, estados) => html + `<li>${estados.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+    </script>
+</body>
